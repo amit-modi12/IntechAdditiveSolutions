@@ -1,0 +1,84 @@
+A.String Compression
+
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+string compress(string s){
+    int i=1;
+    int cnt=1;
+    string ans="";
+    while(i<s.size()){
+        if(s[i]==s[i-1]){
+           
+            cnt++;
+        }
+        else{
+            ans+=s[i-1]+to_string(cnt);
+            cnt=1;
+        }
+         i++;
+    }
+    ans+=s[i-1]+to_string(cnt);
+    return ans;
+}
+string compress2(string str){
+    string ans = "";
+    int i = 0;
+    char prev = '0';
+    while (i < str.size())
+    {
+        char curr = str[i+1];
+        if (prev == curr)
+       {
+            string temp = ans;
+            int x = ans.length();
+            temp = temp.substr(0, x - 1);
+            ans = temp;
+            ans += str[i];
+            ans += curr;
+        }
+        else
+        {
+            ans += str[i];
+            ans += curr;
+        }
+        prev= curr;
+        i+=2;
+    }
+    return ans;
+}
+string decompress(string str){
+    string ans="";
+    stack<char>s;
+    int i=str.size()-1;
+    while(i>=0){
+        int num;
+        if(str[i]>='1' && str[i]<='9'){
+            num=str[i]-'0';
+            
+        }
+        else{
+            for(int j=0;j<num;j++)
+                s.push(str[i]);
+        }
+        i--;
+    }
+    while(!s.empty()){
+        ans+=s.top();
+        s.pop();
+    }
+    return ans;
+}
+int main() {
+    string s;
+    cin>>s;
+    string s1=compress(s);
+    cout<<s1<<endl;
+    string s2=compress2(s1);
+    cout<<s2<<endl;
+    cout<<decompress(s2)<<endl;
+    
+    return 0;
+}
+
+Here  first the string aabbcaaabbb is compressed to a2b2c1a3b3 by counting the occurrence of each character and adding it to the character, then it compressed further to ab2c1ab3 by checking if the characters have same occurrence from left side. For decompressing , the string is iterated from right , the occurrence is stored and the character is printed that many times and so on.

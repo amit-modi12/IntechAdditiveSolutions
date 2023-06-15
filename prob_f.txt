@@ -1,0 +1,54 @@
+F.
+
+In vector algebra, the dot product and cross product are two operations defined on vectors.
+Dot Product:
+The dot product, also known as the scalar product, is an operation that takes two vectors and produces a scalar quantity. The dot product of two vectors A = (A₁, A₂, A₃) and B = (B₁, B₂, B₃) is given by the formula:
+
+A · B = A₁B₁ + A₂B₂ + A₃B₃
+
+The dot product measures the similarity or the degree of alignment between two vectors. It calculates the projection of one vector onto another. It has the following properties:
+
+- Commutativity: A · B = B · A
+- Distributive over vector addition: (A + B) · C = A · C + B · C
+- Scalar multiplication: (kA) · B = k(A · B)
+
+Use cases of the dot product in graphics:
+
+- Determining the angle between two vectors: The dot product can be used to calculate the angle between two vectors by using the formula: θ = cos⁻¹((A · B) / (||A|| ||B||)). This is useful in various applications, such as determining the orientation of objects in 3D graphics.
+
+- Checking orthogonality: Two vectors are orthogonal (perpendicular) if and only if their dot product is zero. This property is used in collision detection algorithms and physics simulations.
+
+- Illumination and shading: The dot product is used in lighting calculations to determine the intensity or brightness of a surface based on the angle between the surface normal and the light direction.
+
+2. Cross Product:
+The cross product, also known as the vector product , is an operation that takes two vectors and produces a new vector perpendicular to both input vectors. The cross product of two vectors A = (A₁, A₂, A₃) and B = (B₁, B₂, B₃) is given by the formula:
+
+A × B = (A₂B₃ - A₃B₂, A₃B₁ - A₁B₃, A₁B₂ - A₂B₁)
+
+The cross product is only defined in three-dimensional space. It has the following properties:
+
+- Anticommutativity: A × B = -B × A
+- Distributive over vector addition: A × (B + C) = (A × B) + (A × C)
+- Scalar multiplication: (kA) × B = A × (kB) = k(A × B)
+
+Use cases of the cross product in graphics:
+
+- Calculating surface normals: The cross product is used to calculate the normal vector of a surface defined by two non-parallel vectors. Normals are essential for rendering realistic lighting and shading effects on 3D models.
+
+- Generating tangent and bitangent vectors: Cross products are used to generate tangent and bitangent vectors, which are crucial for texture mapping and other advanced rendering techniques.
+
+- Computing the area of a parallelogram: The magnitude of the cross product of two vectors is equal to the area of the parallelogram formed by those vectors. This property is utilized in calculating surface areas and volumes in graphics applications.
+
+
+
+https://www.geeksforgeeks.org/dot-and-cross-products-on-vectors/
+https://www.math.ucla.edu/~josephbreen/Understanding_the_Dot_Product_and_the_Cross_Product.pdf
+https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/dot-cross-products/v/vector-dot-product-and-vector-length
+
+
+Parametric form of Ray can be represented as p(t)=p0+d*(t) ; d is direction vector , p0 is origin and t is the parameter that scales the direction vector.
+Plane can be described as (p-a).n=0; here p and a lies on the plane , a is known and the dot product to normal of plane is 0
+We can equate (p0+d*(t)-a).n=0
+Solve for t and put it back in ray equation
+So Intersection point =p0+d*(t)
+If t is negative it means there is no intersection.

@@ -1,0 +1,99 @@
+B. Linked List
+
+#include <stdio.h>
+#include <stdlib.h>
+#include<iostream>
+using namespace std;
+
+//creating node
+struct Node {
+  int val;
+  struct Node *next;
+  Node(int data) {
+    val = data;
+    next = NULL;
+  }
+};
+
+
+void getNthFromLast(Node *head, int k)
+{
+       // Your code here
+       Node*t1;
+       int len=1;
+       t1=head;
+       while(t1->next){
+           t1=t1->next;
+           len++;
+       }
+       int c=1;
+       t1=head;
+       while(c!=(len-k+1)){
+           t1=t1->next;
+           c++;
+       }
+       cout<<t1->val;      
+       
+       
+}
+
+
+
+
+
+int main()
+{
+ 
+
+    struct Node *head = NULL,  *tail = NULL;
+        int n,k,i,x;
+        cin>>n>>k;
+        int y;
+        cin>>y;
+        head = new Node(y);
+        tail = head;
+        for(i=1;i<n;i++)
+        {
+            cin>>x;
+            tail->next = new Node(x);
+            tail = tail->next;
+        }
+
+    getNthFromLast(head, k);
+    
+    return 0;
+}
+
+In this approach we first find the length of the linked list and then iterate the list again from first till (len-k+1) to get our desired node from behind. However we can optimize and reduce the iteration made used to count the length of the linked list.
+
+
+
+
+Bonus1:
+void getNthFromLast(Node *head, int k)
+{
+       // Your code here
+       Node*t1,*t2;
+       int c=1;
+       t1=t2=head;
+       while(c<k){
+           t1=t1->next;
+           c++;
+           if(t1==NULL) //to avoid exhaustion of list
+            cout<<-1;
+       }
+       if(t1!=NULL){
+           while(t1->next){
+              t1=t1->next;
+              t2=t2->next;
+           }
+           cout<<t2->val;
+       }
+       else
+            cout<<-1;
+       
+}
+
+Here we are finding the kth node from end without finding out the length of linked list therefore reducing the number of iteration by maintaining two pointers. First pointer move to k steps then both pointers move simultaneously until t1 reaches end of the list. t2  is k nodes from the end.
+
+

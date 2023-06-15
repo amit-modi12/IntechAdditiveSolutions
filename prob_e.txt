@@ -1,0 +1,75 @@
+E.
+
+//INT_MAX -1 if we cannot make the total return -1
+
+int mn(vector<int>coins,int curr,int amt,vector<vector<int>>&dp){
+    if(curr>=coins.size() || amt<=0){
+        return (amt==0)?0:INT_MAX-1;
+    }
+if(dp[curr][amt]!=-1)
+	return dp[curr][amt];
+    int res=-1;
+    if(coins[curr]>amt){
+        int exc=0+mn(coins,curr+1,amt,dp);
+        res=exc;
+    }
+    else{
+        int exc=0+mn(coins,curr+1,amt,dp);
+        int inc=1+mn(coins,curr,amt-coins[curr],dp);
+        res=min(exc,inc);
+    }
+    return dp[curr][amt]=res;
+}
+int coinchange(vector<int>&coins,int amt){
+   vector<vector<int>>dp(coins.size()+1,vector<int>(amt+1,-1));
+
+    int res=mn(coins,0,amt,dp);
+    return (res==INT_MAX-1)?-1:res;
+}
+
+If we use Greedy here, we end up choosing the coin that is nearest to the change value
+But sometimes we also see a situation where in, choosing the max coin ends up in taking more number of coins than required
+for eg: {9, 6, 5, 1} and change = 11.
+greedy gives - 9,1,1
+optimum sol is: 6+5
+Here we might think of using Recursion or DP, Since it can be seen as a recurrence relation hence it has an optimal substructure property. We can use memoization to store the result to avoid repeated calculation.
+  
+
+
+
+What is Greedy?
+Greedy algorithms make locally optimal choices at each step with the hope of finding a global optimum. They make the choice that seems the best at the current moment, without considering the future consequences. Greedy algorithms are simple and efficient, but they do not guarantee an optimal solution in all cases. They lack the ability to backtrack and reconsider earlier decisions.
+
+Dynamic programming, on the other hand, breaks down a problem into smaller overlapping subproblems and solves each subproblem only once, storing the results in a table for future reference. It uses memoization or bottom-up tabulation to avoid redundant calculations. By solving subproblems and using the results to build up to the larger problem, we achieve an optimal solution.
+
+
+
+
+
+#include <iostream> 
+#include <string> 
+using namespace std; 
+int main() 
+{ 
+    int tc;
+    cin>>tc;
+   while(tc--){
+    string s; 
+    cin>>s; 
+ 
+    int mn = s[0];  //min digit
+    int idx = 0; //min index
+    for (int i = 1; i < s.size(); i++) { 
+      if (s[i] < mn) { 
+         mn = s[i]; 
+         idx = i; 
+      } 
+     } 
+     s.erase(idx, 1); 
+     cout << s << endl;
+   }
+  return 0; 
+
+ } 
+
+Greedy works here as we need to find the smallest digit from left of the given number and remove to find the maximum number after removing 1 digit from the number.Removing smallest digit from left will give us the largest number.

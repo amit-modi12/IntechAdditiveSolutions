@@ -1,0 +1,60 @@
+C. Stack
+
+class MinStack(){
+    int mn;
+    stack<int>s;
+    public:
+    void push(int val){
+        if(s.empty()){
+            s.push(val);
+            mn=val;
+        }
+        else if(val>=s.top())
+            s.push(val);
+        else{
+            s.push(2*val-mn);
+            mn=val;
+        }
+    }
+    
+    void pop() {
+        if(s.top()>=mn){
+            s.pop();
+        }
+        else{
+            mn=2*mn-s.top();
+            s.pop();
+        }
+    }
+    
+    int top() {
+        if(s.top()>=mn)
+            return s.top();
+        else
+            return mn;
+    }
+    
+    int get_min() {
+        return mn;
+    }
+    
+};
+
+Here to get the minimum number present in the stack in O(1), we need to maintain a variable mn which stores minimum value. When a value is pushed in empty stack , it is the minimum number. Then if new element pushed is greater or equal to top value of stack minimum number of stack remains same but when we push an element smaller than top element we push an altered number to stack i.e, 2*mn-curr_val and then modify the minimum number to the current minimum number. Doing this gives us a minimum element of stack in O(1) and also when we pop we can modify the minimum number mn present in stack accordingly.
+
+
+
+Stacks and arrays are both fundamental data structures. While arrays provide constant-time random access to elements and a fixed size, stacks offer efficient last-in, first-out (LIFO) operations.
+
+Here are some real-world scenarios where stacks are often a better choice than arrays:
+
+1. Function calls and recursion: Each time a function is called, its local variables and the return address are pushed onto the stack. When the function completes execution, the stack pops the variables, and the control returns to the caller. This behavior allows for nested function calls and recursive algorithms.
+
+2. Expression evaluation and parsing: Stacks are helpful in evaluating and parsing mathematical expressions, such as infix, postfix, or prefix notations. 
+
+3. Undo/Redo functionality: Stacks can be utilized to implement undo and redo operations in applications. As users perform actions, the details of each action can be stored in a stack. Undoing an action involves popping the most recent action from the stack, while redoing involves pushing previously undone actions back onto the stack.
+
+4. Browser history: Stacks are used in web browsers to maintain a history of visited pages. When a user navigates to a new page, the current page's URL is pushed onto the stack. Pressing the back button pops the top URL from the stack, allowing users to navigate back through their browsing history.
+
+
+

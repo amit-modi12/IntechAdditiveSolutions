@@ -1,0 +1,32 @@
+H.
+This can result due to following cases:-
+
+ 1. Memory issues: Improper memory management, such as memory leaks, null     pointer dereferences, or accessing deallocated memory, can lead to random crashes.
+
+2. Insufficient error handling: If the code does not have proper error handling mechanisms, unexpected conditions or exceptions can cause crashes
+
+3. Environmental inconsistencies: Differences in the execution environment, such as variations in operating systems, hardware configurations, or system libraries, can lead to crashes.
+
+4. Software bugs: Undetected or unhandled software bugs can cause crashes. These bugs may be triggered by specific inputs, system states, or a combination of factors that are difficult to predict.
+
+5. Dependency issues: The software may rely on external libraries, frameworks, or APIs that have compatibility issues or bugs. If there are conflicts or inconsistencies between different dependencies, it can result in random crashes.
+
+We can do the following to suspect and isolating the cause -
+
+  1. Checking logs: Check if there are any error logs or crash reports available that might provide insights into the nature of the crashes. Logs provide information such as error messages, stack traces, and specific conditions that lead to the crash.
+
+2. Review recent code changes: Investigate any recent modifications or additions to the codebase. Changes made shortly before the crashes started occurring may introduce bugs or unintended side effects. 
+
+3. Inspect dependencies and libraries: Evaluate the external libraries or dependencies used by the code. Verify that they are up to date and compatible with the current environment. 
+
+4. Consider resource constraints: Assess if the crashes occur under specific resource-intensive conditions. Insufficient memory, CPU overload, or other resource limitations can cause unpredictable behavior.
+
+5. Employ code analysis tools: Utilize static code analysis tools or debuggers that can assist in identifying common programming errors, memory leaks, or other issues. 
+
+Computer Architecture - Computer architecture refers to the structure, organization, and design of computer systems. It encompasses the hardware components and their interconnections that make up a computer, as well as the principles and rules governing their operation. Computer architecture provides a framework for understanding how a computer system executes instructions, stores and retrieves data, communicates with peripherals, and performs various computational tasks.
+
+It consists of the following -
+
+Processor
+Memory
+Peripherals
